@@ -32,3 +32,23 @@ def num2letra():
 		listOut.append(dic[cIn])
 		cIn = input('Número: ')
 	print(''.join(listOut))
+
+def letra2num():
+	cad = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+	dic = {}
+	listOut = []
+
+	for k, v in enumerate(cad, start=0):
+			dic[v] = str(k)
+	cIn = input('Letra: ')
+	while cIn != '':
+		listOut.append(dic[cIn])
+		cIn = input('Letra: ')
+	print('-'.join(listOut))
+
+# def calculo(n, d):
+# 	cIn = input()
+# 	lista = []
+# 	while cIn != '':
+# 		lista.append(int(cIn)**d % d)
+# 	print('-'.join(lista))
