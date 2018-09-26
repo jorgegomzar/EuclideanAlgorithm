@@ -1,4 +1,4 @@
-def descifrar(encStr, n, d):
+
 	"""	Function to decypher strings using a known private key """
 	dic = {}
 	listDec = []
