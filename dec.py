@@ -1,23 +1,25 @@
-def descifrar(n, d):
-
+def descifrar(cadCifrada, n, d):
+	"""Función para descifrar cadenas de caracteres haciendo uso de una clave privada"""
 	cad = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 	dic = {}
-	listOut = []
+	listDec = []
 
-	for k, v in enumerate(cad, start=0):
+	for k, v in enumerate(cad, start=0):			# Creo un diccionario con equivalencias entre el abecedario y su valor numérico
 			dic[v] = k
-	cadIn = input('Introduce caracteres: ').upper()
-	listC = [c for c in cadIn]
+
+	listCar = [c for c in cadCifrada.upper()]		# Creo un vector a partir de la cadena cifrada
 
 	print('Computando...\n')
 
-	listNum = [dic[c] for c in listC]
+	listNum = [dic[c] for c in listCar]				# Creo un vector con los equivalentes numéricos
 
-	dic = dict((v, k) for k, v in dic.items())
+	dic = dict((v, k) for k, v in dic.items())		# Invierto las claves y valores del diccionario
 
 	for i in listNum:
-		listOut.append(dic[listNum[i]**d % n])
-	return listOut
+		listDec.append(dic[(listNum[i]**d) % n])	# Guardo en un vector los números descifrados
+
+	listOut = [dic[c] for c in listCar]				# Creo un vector con los equivalentes alfabéticos
+	return listOut									# Retorno la lista
 
 def num2letra():
 	cad = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
