@@ -1,51 +1,46 @@
-def descifrar(cadCifrada, n, d):
-	"""Función para descifrar cadenas de caracteres haciendo uso de una clave privada"""
-	cad = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+def descifrar(encStr, n, d):
+	"""	Function to decypher strings using a known private key """
 	dic = {}
 	listDec = []
 
-	for k, v in enumerate(cad, start=0):			# Creo un diccionario con equivalencias entre el abecedario y su valor numérico
-			dic[v] = k
-
-	listCar = [c for c in cadCifrada.upper()]		# Creo un vector a partir de la cadena cifrada
+	listCar = [c for c in encStr.upper()]			# Create a vector from the encrypted string
 
 	print('Computando...\n')
 
-	listNum = [dic[c] for c in listCar]				# Creo un vector con los equivalentes numéricos
-
-	dic = dict((v, k) for k, v in dic.items())		# Invierto las claves y valores del diccionario
+	listNum = letra2num(listCar)					# Create a vector to store the corresponding numerical values
 
 	for i in listNum:
-		listDec.append(dic[(listNum[i]**d) % n])	# Guardo en un vector los números descifrados
+		listDec.append(dic[(listNum[i]**d) % n])	# Store in a vector the numeric values, now decrypted
 
-	listOut = [dic[c] for c in listCar]				# Creo un vector con los equivalentes alfabéticos
-	return listOut									# Retorno la lista
+	listOut = num2letra(listaDec)					# Create a vector with the alphabetical equivalents
+	return listOut									# Return the vector
 
-def num2letra():
-	cad = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+def num2letra(listNum):
+	""" Function to convert a Number input to their equivalent in the alphabet """
+	alphStr = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+	dic = {}
+
+	for k, v in enumerate(alphStr, start=0):		# Create a dictionary with numeric values for each letter of the alphabet
+		dic[k] = v
+
+	listOut = [dic[int(n)] in n for listNum]		# Create a vector to store the equivalent letters
+
+	return listOut									# Return the vector
+
+def letra2num(listCar): # CONTINUE HERE
+	alphStr = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 	dic = {}
 	listOut = []
 
-	for k, v in enumerate(cad, start=0):
-			dic[k] = v
-	cIn = input('Número: ')
-	while cIn != '':
-		cIn = int(cIn)
-		listOut.append(dic[cIn])
-		cIn = input('Número: ')
-	print(''.join(listOut))
+	for k, v in enumerate(alphStr, start=0):		# Create a dictionary with numeric values for each letter of the alphabet
+		dic[v] = k
 
-def letra2num():
-	cad = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-	dic = {}
-	listOut = []
-
-	for k, v in enumerate(cad, start=0):
-			dic[v] = str(k)
 	cIn = input('Letra: ')
+
 	while cIn != '':
-		listOut.append(dic[cIn])
+		listOut.append(str(dic[cIn]))
 		cIn = input('Letra: ')
+
 	print('-'.join(listOut))
 
 # def calculo(n, d):
