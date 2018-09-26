@@ -1,3 +1,5 @@
+# Starting with the english version of the project
+
 import os, dec
 from sys import platform
 
