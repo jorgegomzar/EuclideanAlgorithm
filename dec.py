@@ -16,7 +16,7 @@ def descifrar(encStr, n, d):
 	return listOut									# Return the vector, this contains the string decrypted
 
 def num2char(listNum):
-	""" Function to convert a Number input to their equivalent in the alphabet """
+	""" Function to convert a Number input to String output """
 	alphStr = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 	dic = {}
 
@@ -27,7 +27,8 @@ def num2char(listNum):
 
 	return listOut									# Return the vector of characters
 
-def char2num(listCar): # CONTINUE HERE
+def char2num(listCar):
+	""" Function to convert a String input to Number output """
 	alphStr = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 	dic = {}
 	listOut = []
