@@ -7,15 +7,15 @@ def descifrar(encStr, n, d):
 
 	print('Computando...\n')
 
-	listNum = letra2num(listCar)					# Create a vector to store the corresponding numerical values
+	listNum = char2num(listCar)						# Create a vector to store the corresponding numerical values
 
-	for i in listNum:
-		listDec.append(dic[(listNum[i]**d) % n])	# Store in a vector the numeric values, now decrypted
+	for number in listNum:
+		listDec.append((number**d)%n)				# Store in a vector the numeric values, now decrypted
 
-	listOut = num2letra(listaDec)					# Create a vector with the alphabetical equivalents
-	return listOut									# Return the vector
+	listOut = num2char(listDec)						# Create a vector with the alphabetical equivalents
+	return listOut									# Return the vector, this contains the string decrypted
 
-def num2letra(listNum):
+def num2char(listNum):
 	""" Function to convert a Number input to their equivalent in the alphabet """
 	alphStr = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 	dic = {}
@@ -23,11 +23,11 @@ def num2letra(listNum):
 	for k, v in enumerate(alphStr, start=0):		# Create a dictionary with numeric values for each letter of the alphabet
 		dic[k] = v
 
-	listOut = [dic[int(n)] in n for listNum]		# Create a vector to store the equivalent letters
+	listOut = [dic[n] in n for listNum]				# Create a vector to store the equivalent letters
 
-	return listOut									# Return the vector
+	return listOut									# Return the vector of characters
 
-def letra2num(listCar): # CONTINUE HERE
+def char2num(listCar): # CONTINUE HERE
 	alphStr = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 	dic = {}
 	listOut = []
@@ -35,17 +35,6 @@ def letra2num(listCar): # CONTINUE HERE
 	for k, v in enumerate(alphStr, start=0):		# Create a dictionary with numeric values for each letter of the alphabet
 		dic[v] = k
 
-	cIn = input('Letra: ')
+	listOut = [dic[c] in c for listCar]				# Create a vector to store the equivalent numbers
 
-	while cIn != '':
-		listOut.append(str(dic[cIn]))
-		cIn = input('Letra: ')
-
-	print('-'.join(listOut))
-
-# def calculo(n, d):
-# 	cIn = input()
-# 	lista = []
-# 	while cIn != '':
-# 		lista.append(int(cIn)**d % d)
-# 	print('-'.join(lista))
+	return listOut									# Return the vector of numbers
