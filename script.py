@@ -21,7 +21,7 @@ posD = [phi, 1]
 rem = [phi, e]
 quot = []
 # ------------------------------- #
-#   EXTENDED ECLUDEAN ALGORITHM   #
+#   EXTENDED EUCLIDEAN ALGORITHM   #
 # ------------------------------- #
 i = 0 														# Initial index
 while rem[-1] != 1:											# While remainder is not 1 or 0 keep going
