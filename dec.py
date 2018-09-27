@@ -1,6 +1,5 @@
 def decrypt(encStr, n, d):
 	"""	Function to decypher strings using a known private key """
-	dic = {}
 	listDec = []
 
 	for number in encStr.split(' '):
