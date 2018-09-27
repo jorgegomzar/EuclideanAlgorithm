@@ -21,7 +21,7 @@ posD = [phi, 1]
 rem = [phi, e]
 quot = []
 # ------------------------------- #
-#   EXTENDED EUCLIDEAN ALGORITHM   #
+#   EXTENDED EUCLIDEAN ALGORITHM  #
 # ------------------------------- #
 i = 0 														# Initial index
 while rem[-1] != 1:											# While remainder is not 1 or 0 keep going
@@ -30,9 +30,9 @@ while rem[-1] != 1:											# While remainder is not 1 or 0 keep going
 	posD.append((posD[i]-(posD[i+1]*quot[i]))%phi)			# Append to POSD the penultimate posD minus the product between the last posD and the last quotient
 	i = i + 1
 # For debugging purposes
-print('rem: ',rem)
-print('quot: ',quot)
-print('posD: ',posD)
+# print('rem: ',rem)
+# print('quot: ',quot)
+# print('posD: ',posD)
 
 if rem[-1] != 0:											# If the last remainder is equal to 0 means that some number is not right
 	print('d =',posD[-1])
@@ -40,13 +40,14 @@ else:
 	print('Couldn\'t find d, check all introduced parameters.')
 	exit()
 
-
+os.system('echo off')
+print('Press a key to continue...')
 os.system('pause')
 clear()
 
 if input('Decrypt? (s/n): ').lower() == 's':
 	d = posD[-1]
 	cad = input('Insert the numbers to decrypt separated by 1 space: ')
-	listDescifrada = dec.decrypt(cad, n, d)					# Decrypt the string
-	print('Cadena descifrada: '+''.join(listDescifrada))	# Show it via terminal
+	listDec = dec.decrypt(cad, n, d)					# Decrypt the string
+	print('Decrypted string: '+''.join(listDec))	# Show it via terminal
  
