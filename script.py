@@ -1,4 +1,4 @@
-import os, dec
+import os
 from sys import platform
 
 def clear():
@@ -29,13 +29,14 @@ while rem[-1] != 1:											# While remainder is not 1 or 0 keep going
 	quot.append(rem[i]//rem[i+1])							# Append to QUOT the quotient of the last division
 	posD.append((posD[i]-(posD[i+1]*quot[i]))%phi)			# Append to POSD the penultimate posD minus the product between the last posD and the last quotient
 	i = i + 1
+d = posD[-1]
 # For debugging purposes
 # print('rem: ',rem)
 # print('quot: ',quot)
 # print('posD: ',posD)
 
 if rem[-1] != 0:											# If the last remainder is equal to 0 means that some number is not right
-	print('d =',posD[-1])
+	print('d =', d)
 else:
 	print('Couldn\'t find d, check all introduced parameters.')
 	exit()
@@ -46,8 +47,9 @@ os.system('pause')
 clear()
 
 if input('Decrypt? (s/n): ').lower() == 's':
-	d = posD[-1]
-	cad = input('Insert the numbers to decrypt separated by 1 space: ')
-	listDec = dec.decrypt(cad, n, d)					# Decrypt the string
-	print('Decrypted string: '+''.join(listDec))	# Show it via terminal
- 
+	listDec = []
+	encCad = input('Insert the numbers to decrypt separated by 1 space: ').split(' ')
+	for enc in encCad:
+		listDec.append(chr((int(enc)**d)%n+97))
+	# print(listDec)
+	print('Decrypted string: '+' '.join(listDec))	# Show it via terminal
